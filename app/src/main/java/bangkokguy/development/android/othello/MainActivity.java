@@ -1,7 +1,7 @@
 package bangkokguy.development.android.othello;
 
+import android.app.Activity;
 import android.content.Context;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,16 +17,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
-    public GridView playGround;
+    private GridView playGround;
 
     private final static int cPlayerOne = 1;
     private final static int cPlayerTwo = 2;
     private final static int cEmpty = 0;
 
     private static final String[] cPieces  = {" ","X","O"};
-    private static final int[] cImages = {R.drawable.me_8_256x256, R.drawable.ic_launcher,R.drawable.me_8_256x256};
+    private static final int[] cImages = {R.drawable.othello_empty, R.drawable.othello_1,R.drawable.othello_2};
     private static Integer[][] wPlayGround;
     private static String[] sPlayGround;
     //private static int[]tt;
