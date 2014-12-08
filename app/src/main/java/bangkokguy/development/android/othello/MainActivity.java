@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
 
     private final static int cPlayerOne = 1;
     private final static int cPlayerTwo = 2;
+    private static       int wPlayer = cPlayerOne;
     private final static int cEmpty = 0;
 
     private static final String[] cPieces  = {" ","X","O"};
@@ -106,9 +107,17 @@ public class MainActivity extends Activity {
     /* Create a message handling object as an anonymous class.*/
     private AdapterView.OnItemClickListener mMessageClickedHandler = new AdapterView.OnItemClickListener() {
         public void onItemClick(AdapterView parent, View v, int position, long id) {
+
+            int x, y = 0;
+            x = position / 8+1;
+            y = position % 8+1;
+            //sPlayGround[position]="*";
+            for (int i=-1;i<=1;i++)
+                for (int j=-1;j<=1;j++)
+                    wPlayGround[x+i][y+j]=wPlayer;
+            if (wPlayer==cPlayerOne)wPlayer=cPlayerTwo; else wPlayer=cPlayerOne;
+            cc.refreshItems();
             cc.notifyDataSetChanged();
-            sPlayGround[position]="*";
-            wPlayGround[5][5]=1;
             //bb.clear();
             //bb.addAll(sPlayGround);
         }
@@ -143,6 +152,15 @@ public class MainActivity extends Activity {
             items.add(new Item("Image 5", R.drawable.me_8_256x256));
             items.add(new Item("Image 5", R.drawable.me_8_256x256));
             items.add(new Item("Image 5", R.drawable.me_8_256x256));*/
+        }
+
+        public void refreshItems () {
+            items.clear();
+            for (int i=1; i<9;i++){
+                for (int j=1; j<9;j++) {
+                    items.add(new Item("Image 1", cImages[wPlayGround[i][j]]));
+                }
+            }
         }
 
         @Override
